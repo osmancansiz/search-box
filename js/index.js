@@ -12,6 +12,7 @@ searchBtn.onclick = () => {
   if (searchInput.value != "") {
     var values = searchInput.value;
     searchData.classList.remove("active");
+    localStorage.setItem("searchInput", values);
     searchData.innerHTML =
       "You just typed " +
       "<span style='font-weight: 500;'>" +
@@ -29,3 +30,15 @@ cancelBtn.onclick = () => {
   searchData.classList.toggle("active");
   searchInput.value = "";
 };
+
+$(document).ready(function () {
+  if (typeof Storage !== "undefined") {
+    // Store
+    localStorage.setItem("lastname", "Cansız");
+    localStorage.removeItem("lastname");
+    // Retrieve
+    console.log(localStorage.getItem("lastname"));
+  } else {
+    console.log("Sorry, your browser does not support Web Storage...");
+  }
+});
